@@ -1,0 +1,44 @@
+ALGORITHM SumElementDistinct1
+VAR
+    set1: ARRAY_OF INTEGER[1..100];
+    set2: ARRAY_OF INTEGER[1..100];
+    SumDistinNum: INTEGER:=0;
+    i,j,n,m: INTEGER;
+    SumDoub: INTEGER:=0;
+    SumTabs: INTEGER:=0;
+    SumOver: INTEGER:=0;
+BEGIN
+//REMPLISSAGE ET CREATION DU TABLEAU 1
+    Write("Donnez la taille du tableau1");
+    Read(n);
+    FOR i FROM 0 TO STEP n-1 step 1 DO
+        Write("Donnez l'élement à l'index",i);
+        Read(set1[i]);
+        SumTabs+=set1[i];
+    END_FOR
+    //REMPLISSAGE ET CREATION DU TABLEAU 2
+    Write("Donnez la taille du tableau2");
+    Read(M);
+    FOR j FROM 0 TO STEP m-1 step 1 DO
+        Write("Donnez l'élement à l'index",j);
+        Read(set1[j]);
+        SumTabs+=set2[j];
+    END_FOR
+    //RESOLUTION DU PREMIER PROBLEME
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            IF (set1[i] ==  set2[j]) THEN
+                SumDoub+=(set1[i]*2);
+            END_IF
+        END_FOR
+    END_FOR
+    //RESOLUTION DU 2e PROBLEME
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            IF (set1[i] == set2[j]) THEN
+                SumOver=set1[i] + set2[j];
+            END_IF
+        END_FOR
+    END_FOR
+    Read(SumOver);
+END

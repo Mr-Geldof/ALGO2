@@ -1,0 +1,46 @@
+ALGORITHM SumElementDistinct2
+VAR
+    set1:HASH_TABLE<INTGER,INTEGER>;
+    set2:HASH_TABLE<INTGER,INTEGER>;
+    SumDistinctNum: INTEGER:=0;
+    element=: INTEGER:=0;
+    SumTabs: INTEGER:=0;
+    RecupElement: STRING;
+    i,j,n,m,h,k:INTEGER:=0;
+    verfyElement : BOOLEAN;
+BEGIN
+    Write("Donnez la taille du Hashtable");
+    Read(n);
+//RECUPERATION DE LA HTABLE1
+FOR i FROM 0 TO n STEP 1  DO
+    Write("Donnez l'element a l'indix" +i); 
+    RecupElement=RecupElement+i;
+    Read(RecupElement);
+    set1.insert(i,RecupElement);
+END_FOR
+//RECUPERATION DE LA HTABLE2
+FOR j FROM 0 TO m STEP 1  DO
+    Write("Donnez l'element a l'indix" +j);
+    RecupElement=RecupElement+j;
+    Read(RecupElement);
+    set2.insert(j,RecupElement);
+END_FOR
+//RESOLUTION DU PROBLEME DANS SET2
+    FOR j FROM 0 TO m STEP 1  DO
+        element=set2.get(j);
+                verfyElement =set1.search(element);
+                IF (verfyElement == FALSE) THEN
+                    SumDistinctNum+= element; 
+                END_IF
+    END_FOR
+    
+//RESOLUTION DU PROBLEME DANS SET1
+    FOR i FROM 0 TO n STEP 1  DO
+                element=set1.get(i);
+                verfyElement =set2.search(element);
+                IF (verfyElement == FALSE) THEN
+                    SumDistinctNum+= element; 
+                END_IF
+    END_FOR
+    Write("La somme des elemets distinct est: ", SumDistinctNum);
+END
